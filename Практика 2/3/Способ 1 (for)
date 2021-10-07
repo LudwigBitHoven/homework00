@@ -1,0 +1,9 @@
+a = input()
+b = 0
+c = []
+for i in range(len(a)):
+	if not a[i].isdigit() and not a[i].isalpha():
+		b += 1
+		c.append(a[i])
+print(b)
+print(c)

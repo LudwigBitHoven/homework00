@@ -1,0 +1,9 @@
+a = input()
+c = 0
+for i in range(len(a)//2):
+	if a[i] == a[len(a)-i-1]:
+		c += 1
+if c == len(a)//2:
+	print('палиндром')
+else:
+	print('не палиндром')

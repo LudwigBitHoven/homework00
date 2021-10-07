@@ -1,0 +1,18 @@
+a = input()
+b = a.split()
+c = ''
+res = []
+#слово с наибольшей длиной
+for i in range(len(b)):
+	if len(c) <= len(b[i]):
+		c = b[i]
+#поиск слов с одинаковой длиной и занесение в результирующий список
+for i in range(len(b)):
+	if len(b[i]) == len(c):
+		res.append(b[i])
+#фильтрация результирующего списка
+for i in range(len(res) - 1):
+	for j in range(len(res) - i - 1):
+		if res[j] > res[j+1]:
+			res[j], res[j+1] = res[j+1], res[j]
+print(res)

@@ -1,0 +1,3 @@
+c, d, e = int(input()), int(input()), int(input())
+Res = lambda a,b,f: [(b + f)**0.5 - a, -(b + f)**0.5 - a] if b + f >= 0 else 'Нельзя'
+print(Res(c, d, e))

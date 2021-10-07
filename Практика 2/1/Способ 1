@@ -1,0 +1,3 @@
+Res = lambda a,b,f: [(b + f)**0.5 - a, -(b + f)**0.5 - a]
+c, d, e = int(input()), int(input()), int(input())
+print(Res(c, d, e))
