@@ -1,4 +1,0 @@
-a = input()
-filtered = ''.join(filter(lambda x: not str(x).isdigit() and not str(x).isalpha(), a))
-print(filtered)
-print(len(filtered))
