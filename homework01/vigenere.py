@@ -3,7 +3,8 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     key = keyword.upper()
     for i in range(len(plaintext)):
         if plaintext[i].isalpha():
-            if (ord(plaintext[i]) + ord(key[i % len(key)]) > 187
+            if (
+                ord(plaintext[i]) + ord(key[i % len(key)]) > 187
                 and plaintext[i].islower()
                 or ord(plaintext[i]) + ord(key[i % len(key)]) > 155
                 and plaintext[i].isupper()
@@ -22,7 +23,8 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
     key = keyword.upper()
     for i in range(len(a)):
         if a[i].isalpha():
-            if (ord(a[i]) - ord(key[i % len(key)]) < 32
+            if (
+                ord(a[i]) - ord(key[i % len(key)]) < 32
                 and a[i].islower()
                 or ord(a[i]) - ord(key[i % len(key)]) < 0
                 and a[i].isupper()
