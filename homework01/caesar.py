@@ -2,19 +2,27 @@ import typing as tp
 
 
 def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
-    ciphertext = ''
+    ciphertext = ""
     for i in plaintext:
         if i.isalpha():
-            if (ord(i) + shift % 26 > ord("z") and i.islower() or #если шифр за пределами алфавита
-                ord(i) + shift % 26 > ord("Z") and i.isupper()): #shift % 26 позволяет делать сдвиги > 26
+            if (
+                ord(i) + shift % 26 > ord("z")
+                and i.islower()
+                or ord(i) + shift % 26 > ord("Z")
+                and i.isupper()
+            ):
                 ciphertext += chr(ord(i) + shift % 26 - 26)
-            elif (shift < 0 and (ord(i) + shift % 26 < ord("a") and i.islower() or
-                ord(i) + shift % 26 < ord("A") and i.isupper())):
+            elif shift < 0 and (
+                ord(i) + shift % 26 < ord("a")
+                and i.islower()
+                or ord(i) + shift % 26 < ord("A")
+                and i.isupper()
+            ):
                 ciphertext += chr(ord(i) + shift % 26 + 26)
             else:
                 ciphertext += chr(ord(i) + shift % 26)
         else:
-            ciphertext += chr(ord(i)) #занесение остальных символов
+            ciphertext += chr(ord(i))
     return ciphertext
 
 
@@ -25,14 +33,21 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
 
 def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
     shift = -shift
-    plaintext = ''
+    plaintext = ""
     for i in ciphertext:
         if i.isalpha():
-            if (ord(i) + shift % 26 > ord("z") and i.islower() or
-                ord(i) + shift % 26 > ord("Z") and i.isupper()):
+            if (
+                ord(i) + shift % 26 > ord("z")
+                and i.islower()
+                or ord(i) + shift % 26 > ord("Z")
+                and i.isupper()
+            ):
                 plaintext += chr(ord(i) + shift % 26 - 26)
-            elif (shift < 0 and (ord(i) + shift % 26 < ord("a") and i.islower() or
-                ord(i) + shift % 26 < ord("A") and i.isupper())):
+            elif shift < 0 and (
+                ord(i) + shift % 26 < ord("a")
+                and i.islower()
+                or ord(i) + shift % 26 < ord("A") and i.isupper()
+            ):
                 plaintext += chr(ord(i) + shift % 26 + 26)
             else:
                 plaintext += chr(ord(i) + shift % 26)
@@ -48,3 +63,4 @@ def caesar_breaker_brute_force(ciphertext: str, dictionary: tp.Set[str]) -> int:
     best_shift = 0
     # PUT YOUR CODE HERE
     return best_shift
+
