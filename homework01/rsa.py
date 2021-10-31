@@ -37,9 +37,9 @@ def multiplicative_inverse(e: int, phi: int) -> int:
         e = temp2
         x = x2 - temp1 * x1
         y = d - temp1 * y1
-        print(str(x) + ' ' + str(y))
-        print(str(x1) + ' ' + str(y1))
-        print(str(x2) + ' ' + str(y1))
+        print(str(x) + " " + str(y))
+        print(str(x1) + " " + str(y1))
+        print(str(x2) + " " + str(y1))
         x2 = x1
         x1 = x
         d = y1
@@ -49,9 +49,9 @@ def multiplicative_inverse(e: int, phi: int) -> int:
 
 def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[int, int]]:
     if not (is_prime(p) and is_prime(q)):
-        raise ValueError('Both numbers must be prime.')
+        raise ValueError("Both numbers must be prime")
     elif p == q:
-        raise ValueError('p and q cannot be equal')
+        raise ValueError("p and q cannot be equal")
     n = p * q
     # PUT YOUR CODE HERE
     phi = (p - 1)(q - 1)
@@ -76,9 +76,9 @@ def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[in
 
 def encrypt(pk: tp.Tuple[int, int], plaintext: str) -> tp.List[int]:
     if not (is_prime(p) and is_prime(q)):
-        raise ValueError('Both numbers must be prime')
+        raise ValueError("Both numbers must be prime")
     elif p == q:
-        raise ValueError('p and q cannot be equal')
+        raise ValueError("p and q cannot be equal")
     n = p * q
     phi = (p - 1) * (q - 1)
     e = random.randrange(1, phi)
