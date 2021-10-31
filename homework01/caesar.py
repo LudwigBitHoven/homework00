@@ -46,7 +46,8 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
             elif shift < 0 and (
                 ord(i) + shift % 26 < ord("a")
                 and i.islower()
-                or ord(i) + shift % 26 < ord("A") and i.isupper()
+                or ord(i) + shift % 26 < ord("A")
+                and i.isupper()
             ):
                 plaintext += chr(ord(i) + shift % 26 + 26)
             else:
@@ -63,4 +64,3 @@ def caesar_breaker_brute_force(ciphertext: str, dictionary: tp.Set[str]) -> int:
     best_shift = 0
     # PUT YOUR CODE HERE
     return best_shift
-
