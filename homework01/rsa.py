@@ -87,7 +87,7 @@ def encrypt(pk: tp.Tuple[int, int], plaintext: str) -> tp.List[int]:
         e = random.randrange(1, phi)
         g = gcd(e, phi)
     d = multiplicative_inverse(e, phi)
-    return [(e, n), (d, n)]
+    return [e, n, d, n]
 
 
 def decrypt(pk: tp.Tuple[int, int], ciphertext: tp.List[int]) -> str:
