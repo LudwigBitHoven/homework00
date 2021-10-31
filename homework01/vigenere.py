@@ -35,4 +35,3 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
         else:
             res += a[i]
     return res
-
