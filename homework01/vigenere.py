@@ -4,12 +4,12 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     for i in range(len(plaintext)):
         if plaintext[i].isalpha():
             if (
-                ord(plaintext[i]) + ord(key[i % len(key)]) > 187
+                ord(plaintext[i]) + ord(key[i % len(key)]) - ord("A") > ord("z")
                 and plaintext[i].islower()
-                or ord(plaintext[i]) + ord(key[i % len(key)]) > 155
+                or ord(plaintext[i]) + ord(key[i % len(key)]) - ord("A") > ord("Z")
                 and plaintext[i].isupper()
             ):
-                res += chr(ord(plaintext[i]) + ord(key[i % len(key)]) - ord("a") - 26)
+                res += chr(ord(plaintext[i]) + ord(key[i % len(key)]) - 26 - ord("A"))
             else:
                 res += chr(ord(plaintext[i]) + ord(key[i % len(key)]) - ord("A"))
         else:
@@ -29,9 +29,9 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
                 or ord(a[i]) - ord(key[i % len(key)]) < 0
                 and a[i].isupper()
             ):
-                res += chr(ord(a[i]) - ord(key[i % len(key)]) + 65 + 26)
+                res += chr(ord(a[i]) - ord(key[i % len(key)]) + ord("A") + 26)
             else:
-                res += chr(ord(a[i]) - ord(key[i % len(key)]) + 65)
+                res += chr(ord(a[i]) - ord(key[i % len(key)]) + ord("A"))
         else:
             res += a[i]
     return res
