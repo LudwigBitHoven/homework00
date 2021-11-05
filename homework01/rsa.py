@@ -33,9 +33,9 @@ def multiplicative_inverse(e: int, phi: int):
     return xy_finder(e, phi)[0] % phi
 
 
-def generate_keypair(p: int, q: int):
+def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[int, int]]:
     if not (is_prime(p) and is_prime(q)):
-        raise ValueError("Both numbers must be prime")
+        raise ValueError("Both numbers must be prime.")
     elif p == q:
         raise ValueError("p and q cannot be equal")
     n = p * q
