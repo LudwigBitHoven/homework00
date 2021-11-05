@@ -30,6 +30,7 @@ def multiplicative_inverse(e: int, phi: int):
         else:
             y, x = xy_finder(tphi % te, te)
             return (x - (tphi // te) * y, y)
+
     return xy_finder(e, phi)[0] % phi
 
 
