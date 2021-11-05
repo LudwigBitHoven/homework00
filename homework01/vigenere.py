@@ -16,7 +16,6 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
             res += plaintext[i]
     return res
 
-
     """
     Encrypts plaintext using a Vigenere cipher.
 
@@ -30,7 +29,6 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     ciphertext = ""
     # PUT YOUR CODE HERE
     return ciphertext
-
 
 def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
     res = ""
