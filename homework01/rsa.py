@@ -23,28 +23,16 @@ def gcd(a: int, b: int) -> int:
     return a + b
 
 
-def multiplicative_inverse(e: int, phi: int) -> int:
-    d = 0
-    x1 = 0
-    x2 = 1
-    y1 = 1
-    temp_phi = phi
+def multiplicative_inverse(e: int, phi: int):
+    def xy_finder(te: int, tphi: int):
+        if te == 0:
+            return (0, 1)
+        else:
+            y, x = xy_finder(tphi % te, te)
+            return (x - (tphi // te) * y, y)
 
-    while e > 0:
-        temp1 = temp_phi // e
-        temp2 = temp_phi - temp1 * e
-        temp_phi = e
-        e = temp2
-        x = x2 - temp1 * x1
-        y = d - temp1 * y1
-        print(str(x) + " " + str(y))
-        print(str(x1) + " " + str(y1))
-        print(str(x2) + " " + str(y1))
-        x2 = x1
-        x1 = x
-        d = y1
-        y1 = y
-    return d
+    return xy_finder(e, phi)[0] % phi
+
 
 
 def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[int, int]]:
@@ -87,7 +75,7 @@ def encrypt(pk: tp.Tuple[int, int], plaintext: str) -> tp.List[int]:
         e = random.randrange(1, phi)
         g = gcd(e, phi)
     d = multiplicative_inverse(e, phi)
-    return [e, n, d, n]
+    return [e, n, d,n]
 
 
 def decrypt(pk: tp.Tuple[int, int], ciphertext: tp.List[int]) -> str:
