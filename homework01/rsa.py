@@ -63,19 +63,13 @@ def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[in
 
 
 def encrypt(pk: tp.Tuple[int, int], plaintext: str) -> tp.List[int]:
-    if not (is_prime(p) and is_prime(q)):
-        raise ValueError("Both numbers must be prime")
-    elif p == q:
-        raise ValueError("p and q cannot be equal")
-    n = p * q
-    phi = (p - 1) * (q - 1)
-    e = random.randrange(1, phi)
-    g = gcd(e, phi)
-    while g != 1:
-        e = random.randrange(1, phi)
-        g = gcd(e, phi)
-    d = multiplicative_inverse(e, phi)
-    return [e, n, d,n]
+    # Unpack the key into it's components
+    key, n = pk
+    # Convert each letter in the plaintext to numbers based on
+    # the character using a^b mod m
+    cipher = [(ord(char) ** key) % n for char in plaintext]
+    # Return the array of bytes
+    return cipher
 
 
 def decrypt(pk: tp.Tuple[int, int], ciphertext: tp.List[int]) -> str:
