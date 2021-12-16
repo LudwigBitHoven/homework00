@@ -133,6 +133,32 @@ def find_possible_values(grid: tp.List[tp.List[str]], pos: tp.Tuple[int, int]) -
     return integers.difference(used_integers)
 
 
+def solve(grid: tp.List[tp.List[str]]) -> tp.Optional[tp.List[tp.List[str]]]:
+    """Решение пазла, заданного в grid"""
+    """Как решать Судоку?
+        1. Найти свободную позицию
+        2. Найти все возможные значения, которые могут находиться на этой позиции
+        3. Для каждого возможного значения:
+            3.1. Поместить это значение на эту позицию
+            3.2. Продолжить решать оставшуюся часть пазла
+
+    >>> grid = read_sudoku('puzzle1.txt')
+    >>> solve(grid)
+    [['5', '3', '4', '6', '7', '8', '9', '1', '2'], ['6', '7', '2', '1', '9', '5', '3', '4', '8'], ['1', '9', '8', '3', '4', '2', '5', '6', '7'], ['8', '5', '9', '7', '6', '1', '4', '2', '3'], ['4', '2', '6', '8', '5', '3', '7', '9', '1'], ['7', '1', '3', '9', '2', '4', '8', '5', '6'], ['9', '6', '1', '5', '3', '7', '2', '8', '4'], ['2', '8', '7', '4', '1', '9', '6', '3', '5'], ['3', '4', '5', '2', '8', '6', '1', '7', '9']]
+    """
+    if find_empty_positions(grid) is None:
+        return grid
+    for i in find_possible_values(grid, find_empty_positions(grid)):
+        pos = find_empty_positions(grid)
+        x = pos[0]
+        y = pos[1]
+        grid[x][y] = i
+        if solve(grid):
+            return grid
+        grid[x][y] = "."
+    return None
+
+
 def generate_sudoku(N: int):
     """Генерация судоку заполненного на N элементов
 
@@ -187,45 +213,6 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
             if len(f) != len(set(f)):
                 return False
     return True
-
-
-def generate_sudoku(N: int):
-    """Генерация судоку заполненного на N элементов
-
-    >>> grid = generate_sudoku(40)
-    >>> sum(1 for row in grid for e in row if e == '.')
-    41
-    >>> solution = solve(grid)
-    >>> check_solution(solution)
-    True
-    >>> grid = generate_sudoku(1000)
-    >>> sum(1 for row in grid for e in row if e == '.')
-    0
-    >>> solution = solve(grid)
-    >>> check_solution(solution)
-    True
-    >>> grid = generate_sudoku(0)
-    >>> sum(1 for row in grid for e in row if e == '.')
-    81
-    >>> solution = solve(grid)
-    >>> check_solution(solution)
-    True
-    """
-    import random
-
-    grid_dot = [["." for j in range(9)] for i in range(9)]
-    grid = solve(grid_dot)
-
-    sud_grid = [[i, j] for i in range(9) for j in range(9)]
-    random.shuffle(sud_grid)
-
-    deletions = 81 - N
-    if deletions <= 0:
-        return grid
-    else:
-        for i in range(deletions):
-            grid[sud_grid[i][0]][sud_grid[i][1]] = "."
-        return grid
 
 
 if __name__ == "__main__":
