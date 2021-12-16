@@ -106,7 +106,7 @@ def find_empty_positions(
                 empty.append(x)
                 empty.append(y)
     if empty:
-        return tuple(empty)
+        return tuple(empty[0], empty[1])
     else:
         return None
 
