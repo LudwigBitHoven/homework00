@@ -89,7 +89,7 @@ def get_block(grid: tp.List[tp.List[str]], pos: tp.Tuple[int, int]) -> tp.List[s
 
 def find_empty_positions(
     grid: tp.List[tp.List[str]],
-) -> tp.Optional[tp.Tuple[int, int]]:
+):
     """Найти первую свободную позицию в пазле
 
     >>> find_empty_positions([['1', '2', '.'], ['4', '5', '6'], ['7', '8', '9']])
@@ -106,7 +106,7 @@ def find_empty_positions(
                 empty.append(x)
                 empty.append(y)
     if empty:
-        return tuple(empty[0], empty[1])
+        return tuple(empty)
     else:
         return None
 
