@@ -195,7 +195,7 @@ def generate_sudoku(N: int) -> tp.List[tp.List[str]]:
     >>> check_solution(solution)
     True
     """
-        import random
+    import random
 
     grid_dot = [["." for j in range(9)] for i in range(9)]
     grid = solve(grid_dot)
