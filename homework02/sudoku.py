@@ -167,16 +167,16 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
         a = get_row(solution, (0, i))
         b = get_col(solution, (0, i))
         if len(a) != len(set(a)) or len(b) != len(set(b)):
-            return "False"
+            return False
     for i in range(0, 8, 3):
         for j in range(0, 8, 3):
             f = get_block(solution, (i, j))
             if len(f) != len(set(f)):
-                return "False"
-    return "True"
+                return False
+    return True
 
 
-def generate_sudoku(N: int) -> tp.List[tp.List[str]]:
+def generate_sudoku(N: int):
     """Генерация судоку заполненного на N элементов
 
     >>> grid = generate_sudoku(40)
