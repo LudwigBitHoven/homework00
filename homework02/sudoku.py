@@ -200,7 +200,7 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
     """Если решение solution верно, то вернуть True, в противном случае False"""
     # TODO: Add doctests with bad puzzles
     pass
-    for i in range(10):
+    for i in range(9):
         a = get_row(solution, (i, 0))
         b = get_col(solution, (0, i))
         if len(a) != len(set(a)) or len(b) != len(set(b)):
