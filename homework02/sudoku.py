@@ -200,12 +200,15 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
     """Если решение solution верно, то вернуть True, в противном случае False"""
     # TODO: Add doctests with bad puzzles
     for i in range(9):
-        if (
-            len(set(get_row(solution, (i, i)))) != 9
-            or len(set(get_col(solution, (i, i)))) != 9
-            or len(set(get_block(solution, (i, i)))) != 9
-        ):
+        a = get_row(solution, (0, i))
+        b = get_col(solution, (i, 0))
+        if 9 != len(set(a)) or 9 != len(set(b)) or solution[i][i] == ".":
             return False
+    for i in range(0, 8, 3):
+        for j in range(0, 8, 3):
+            f = get_block(solution, (i, j))
+            if len(f) != len(set(f)):
+                return False
     return True
 
 
