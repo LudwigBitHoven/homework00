@@ -201,8 +201,8 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
     # TODO: Add doctests with bad puzzles
     pass
     for i in range(10):
-        a = get_row(solution, (0, i))
-        b = get_col(solution, (i, 0))
+        a = get_row(solution, (i, 0))
+        b = get_col(solution, (0, i))
         if len(a) != len(set(a)) or len(b) != len(set(b)):
             return False
     for i in range(0, 8, 3):
