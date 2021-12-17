@@ -199,17 +199,14 @@ def generate_sudoku(N: int):
 def check_solution(solution: tp.List[tp.List[str]]) -> bool:
     """Если решение solution верно, то вернуть True, в противном случае False"""
     # TODO: Add doctests with bad puzzles
-    flag = True
     for i in range(9):
-        diagonal = (i, i)
         if (
-            len(set(get_row(solution, diagonal))) != 9
-            or len(set(get_col(solution, diagonal))) != 9
-            or len(set(get_block(solution, diagonal))) != 9
-            or solution[i][i] == "."
+            len(set(get_row(solution, (i, i)))) != 9
+            or len(set(get_col(solution, (i, i)))) != 9
+            or len(set(get_block(solution, (i, i)))) != 9
         ):
-            flag = False
-    return flag
+            return False
+    return True
 
 
 if __name__ == "__main__":
