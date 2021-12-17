@@ -203,10 +203,10 @@ def check_solution(solution: tp.List[tp.List[str]]) -> bool:
     for i in range(9):
         a = get_row(solution, (i, 0))
         b = get_col(solution, (0, i))
-        if len(a) != len(set(a)) or len(b) != len(set(b)):
+        if 9 != len(set(a)) or 9 != len(set(b)):
             return False
-    for i in range(1, 8, 3):
-        for j in range(1, 8, 3):
+    for i in range(0, 8, 3):
+        for j in range(0, 8, 3):
             f = get_block(solution, (i, j))
             if len(f) != len(set(f)):
                 return False
