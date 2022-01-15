@@ -4,7 +4,7 @@ import typing as tp
 
 def is_prime(n: int) -> bool:
     d = 2
-    if n == 1:
+    if n <= 1:
         return False
     while n % d != 0 and d * d <= n:
         d += 1
