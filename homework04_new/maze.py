@@ -177,7 +177,7 @@ def solve_maze(grid: List[List[Union[str, int]]]):
     """
     coord = get_exits(grid)
     if len(coord) == 1:
-        return grid, coord[0]
+        return grid, None
     if not encircled_exit(grid, coord[0]) and not encircled_exit(grid, coord[1]):
         for x, row in enumerate(grid):
             for y, _ in enumerate(row):
