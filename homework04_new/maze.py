@@ -13,19 +13,19 @@ def remove_wall(
     grid: List[List[Union[str, int]]], coord: Tuple[int, int]
 ) -> List[List[Union[str, int]]]:
     y, x = coord
-    way = choice(("D", "L"))
-    if way == "L":
-        if x > 1:
-            grid[y][x - 1] = " "
+    vec = choice(("R", "U"))
+    if vec == "U":
+        if x < len(grid) - 2:
+            grid[y][x + 1] = " "
         else:
-            if y < len(grid) - 2:
-                grid[y + 1][x] = " "
+            if y > 1:
+                grid[y - 1][x] = " "
     else:
-        if y < len(grid) - 2:
-            grid[y + 1][x] = " "
+        if y > 1:
+            grid[y - 1][x] = " "
         else:
-            if x > 1:
-                grid[y][x - 1] = " "
+            if x < len(grid) - 2:
+                grid[y][x + 1] = " "
     return grid
 
 
