@@ -1,8 +1,6 @@
-import tkinter as tk
 from typing import List
 from tkinter import messagebox, ttk
-
-from maze import add_path_to_grid, bin_tree_maze, solve_maze
+import tkinter as tk
 
 
 def draw_cell(x, y, color, size: int = 10):
