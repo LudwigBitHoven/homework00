@@ -24,14 +24,20 @@ def gcd(a: int, b: int) -> int:
 
 
 def multiplicative_inverse(e: int, phi: int):
-    def xy_finder(te: int, tphi: int):
-        if te == 0:
-            return (0, 1)
-        else:
-            y, x = xy_finder(tphi % te, te)
-            return (x - (tphi // te) * y, y)
-
-    return xy_finder(e, phi)[0] % phi
+    div: list = []
+    phi1 = phi
+    div.insert(0, phi // e)
+    while phi % e != 0:
+        c = phi % e
+        phi = e
+        e = c
+        div.insert(0, phi // e)
+    x, y = 0, 1
+    for i in range(1, len(div)):
+        x1 = y
+        y = x - x1 * div[i]
+        x = x1
+    return y % phi1
 
 
 def generate_keypair(p: int, q: int) -> tp.Tuple[tp.Tuple[int, int], tp.Tuple[int, int]]:
