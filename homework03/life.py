@@ -33,7 +33,10 @@ class GameOfLife:
         if not randomize:
             return [[0 for _ in range(self.cell_height)] for __ in range(self.cell_width)]
         else:
-            return [[random.choice([0, 1]) for _ in range(self.cell_height)] for __ in range(self.cell_width)]
+            return [
+                [random.choice([0, 1]) for _ in range(self.cell_height)]
+                for __ in range(self.cell_width)
+            ]
 
     def get_neighbours(self, cell: Cell) -> Cells:
         n = []
