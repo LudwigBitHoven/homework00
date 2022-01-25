@@ -31,27 +31,27 @@ class GameOfLife:
 
     def create_grid(self, randomize: bool = True) -> Grid:
         if not randomize:
-            return [[0 for _ in range(self.cols)] for __ in range(self.rows)]
+            return [[0 for _ in range(self.cell_height)] for __ in range(self.cell_width)]
         else:
-            return [[random.choice([0, 1]) for _ in range(self.cols)] for __ in range(self.rows)]
+            return [[random.choice([0, 1]) for _ in range(self.cell_height)] for __ in range(self.cell_width)]
 
     def get_neighbours(self, cell: Cell) -> Cells:
         n = []
         if Cell[0] > 0:
             n.append(self.curr_generation[Cell[0] - 1][Cell[1]])
-        if Cell[0] < self.rows - 1:
+        if Cell[0] < self.cell_width - 1:
             n.append(self.curr_generation[Cell[0] + 1][Cell[1]])
         if Cell[1] > 0:
             n.append(self.curr_generation[Cell[0]][Cell[1] - 1])
-        if Cell[1] < self.cols - 1:
+        if Cell[1] < self.cell_height - 1:
             n.append(self.curr_generation[Cell[0]][Cell[1] + 1])
         if Cell[0] > 0 and Cell[1] > 0:
             n.append(self.curr_generation[Cell[0] - 1][Cell[1] - 1])
-        if Cell[0] > 0 and Cell[1] < self.cols - 1:
+        if Cell[0] > 0 and Cell[1] < self.cell_height - 1:
             n.append(self.curr_generation[Cell[0] - 1][Cell[1] + 1])
-        if Cell[0] < self.rows - 1 and Cell[1] > 0:
+        if Cell[0] < self.cell_width - 1 and Cell[1] > 0:
             n.append(self.curr_generation[Cell[0] + 1][Cell[1] - 1])
-        if Cell[0] < self.rows - 1 and Cell[1] < self.cols - 1:
+        if Cell[0] < self.cell_width - 1 and Cell[1] < self.cell_height - 1:
             n.append(self.curr_generation[Cell[0] + 1][Cell[1] + 1])
         return n
 
