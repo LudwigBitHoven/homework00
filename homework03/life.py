@@ -38,7 +38,7 @@ class GameOfLife:
                 for __ in range(self.cell_width)
             ]
 
-    def get_neighbours(self, cell: c) -> Cells:
+    def get_neighbours(self, c: Cell) -> Cells:
         n = []
         if c[0] > 0:
             n.append(self.curr_generation[c[0] - 1][c[1]])
