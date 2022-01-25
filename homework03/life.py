@@ -38,24 +38,24 @@ class GameOfLife:
                 for __ in range(self.cell_width)
             ]
 
-    def get_neighbours(self, cell: Cell) -> Cells:
+    def get_neighbours(self, cell: c) -> Cells:
         n = []
-        if Cell[0] > 0:
-            n.append(self.curr_generation[Cell[0] - 1][Cell[1]])
-        if Cell[0] < self.cell_width - 1:
-            n.append(self.curr_generation[Cell[0] + 1][Cell[1]])
-        if Cell[1] > 0:
-            n.append(self.curr_generation[Cell[0]][Cell[1] - 1])
-        if Cell[1] < self.cell_height - 1:
-            n.append(self.curr_generation[Cell[0]][Cell[1] + 1])
-        if Cell[0] > 0 and Cell[1] > 0:
-            n.append(self.curr_generation[Cell[0] - 1][Cell[1] - 1])
-        if Cell[0] > 0 and Cell[1] < self.cell_height - 1:
-            n.append(self.curr_generation[Cell[0] - 1][Cell[1] + 1])
-        if Cell[0] < self.cell_width - 1 and Cell[1] > 0:
-            n.append(self.curr_generation[Cell[0] + 1][Cell[1] - 1])
-        if Cell[0] < self.cell_width - 1 and Cell[1] < self.cell_height - 1:
-            n.append(self.curr_generation[Cell[0] + 1][Cell[1] + 1])
+        if c[0] > 0:
+            n.append(self.curr_generation[c[0] - 1][c[1]])
+        if c[0] < self.cell_width - 1:
+            n.append(self.curr_generation[c[0] + 1][c[1]])
+        if c[1] > 0:
+            n.append(self.curr_generation[c[0]][c[1] - 1])
+        if c[1] < self.cell_height - 1:
+            n.append(self.curr_generation[c[0]][c[1] + 1])
+        if c[0] > 0 and c[1] > 0:
+            n.append(self.curr_generation[c[0] - 1][c[1] - 1])
+        if c[0] > 0 and c[1] < self.cell_height - 1:
+            n.append(self.curr_generation[c[0] - 1][c[1] + 1])
+        if c[0] < self.cell_width - 1 and c[1] > 0:
+            n.append(self.curr_generation[c[0] + 1][c[1] - 1])
+        if c[0] < self.cell_width - 1 and c[1] < self.cell_height - 1:
+            n.append(self.curr_generation[c[0] + 1][c[1] + 1])
         return n
 
     def get_next_generation(self) -> Grid:
