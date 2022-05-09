@@ -1,4 +1,4 @@
-*import typing as tp
+import typing as tp
 
 import requests
 from lxml import etree
