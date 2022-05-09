@@ -27,7 +27,7 @@ class NaiveBayesClassifier(tp.Generic[T]):
         self.words_count = 0
 
     def fit(self, x: tp.List[str], y: tp.List[T]) -> None:
-        """Fit Naive Bayes classifier according to x, y."""
+        """Fit NaiveBayesClassifier according to x, y."""
         for xi, yi in zip(x, y):
             self.class_counter[yi] += 1
             for word in xi.split():
