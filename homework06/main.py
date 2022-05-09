@@ -1,7 +1,7 @@
 import typing as tp
 from parser import *
 
-from bayes import NaiveBayesClassifier
+from classifier import NaiveBayesClassifier
 from bottle import redirect, request, route, run, view
 from db import *
 from News import News
