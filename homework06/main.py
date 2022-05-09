@@ -1,10 +1,9 @@
+from bayes import NaiveBayesClassifier
+from bottle import redirect, request, route, run, template
+from db import News, session
+from scrapper import get_news
 import typing as tp
 from parser import *
-
-from bottle import redirect, request, route, run, view
-
-from classifier import NaiveBayesClassifier
-from db import *
 from News import News
 from textutils import clean
 
