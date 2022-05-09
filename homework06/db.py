@@ -10,7 +10,7 @@ class NoSuchTable(Exception):
 
 def make_connection(file_name: str = "news.db") -> sqlite3.Connection:
     """
-    Make connection to sqlite db
+    Connection to sqlite db
 
     Args:
         file_name: str with name of db file
