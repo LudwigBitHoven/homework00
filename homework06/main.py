@@ -1,8 +1,8 @@
 import typing as tp
 from parser import *
 
-from classifier import NaiveBayesClassifier
 from bottle import redirect, request, route, run, view
+from classifier import NaiveBayesClassifier
 from db import *
 from News import News
 from scrapper import get_news
