@@ -24,7 +24,7 @@ def make_request(url: str) -> requests.Response:
     return resp
 
 
-def get_news(url: str, n: int = 3) -> tp.List[tp.Dict[str, tp.Any]]:
+def get_newss(url: str, n: int = 3) -> tp.List[tp.Dict[str, tp.Any]]:
     """
     Get news from the site (works only with https://news.ycombinator.com/)
 
