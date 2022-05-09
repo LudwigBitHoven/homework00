@@ -22,8 +22,8 @@ jobs:
           pip install -r ${{ github.head_ref }}/requirements.txt
         fi
         python3 -m pip install types-requests
-        pip install lxml
-        pip install bottle
+        pip install lxml==4.8.0
+        pip install bottle==0.12.19
     - name: Run isort
       run: |
         isort -c --diff --profile black ${{ github.head_ref }}
