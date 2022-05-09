@@ -5,7 +5,6 @@ from bayes import NaiveBayesClassifier
 from bottle import redirect, request, route, run, view
 from db import *
 from News import News
-from scrapper import get_news
 from textutils import clean
 
 classifier = NaiveBayesClassifier()
