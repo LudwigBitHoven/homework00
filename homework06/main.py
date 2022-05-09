@@ -5,7 +5,6 @@ from bottle import redirect, request, route, run, view
 from classifier import NaiveBayesClassifier
 from db import *
 from News import News
-from scrapper import get_news
 from textutils import clean
 
 classifier = NaiveBayesClassifier()
@@ -97,7 +96,7 @@ def update_news() -> None:
     """
     Updates news in db
     """
-    add_news(conn, get_news("https://news.ycombinator.com/", 100))
+    add_news(conn, get_newss("https://news.ycombinator.com/", 100))
     fit_classifier()
     redirect(get_redirect_path(request.headers.environ.get("HTTP_REFERER", "")))
 
